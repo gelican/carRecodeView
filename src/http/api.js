@@ -7,13 +7,10 @@ const api = {
      */
     // 前台登录
     login(data) {
-        return request('/user', 'post', data)
-    },
-    getUserLogin(data) {
         return request('/user/login', 'post', data)
     },
-    getUserList(data) {
-        return request('/user', 'get')
+    register(data) {
+        return request('/user/register', 'post', data)
     },
 }
 

@@ -2,7 +2,7 @@ import axios from 'axios'
 import Vue from 'vue'
 import store from '../store'
 import router from '../router/index'
-import { Message } from 'element-ui';
+import { Notify } from 'vant';
 
 // 请求前
 axios.interceptors.request.use(res => {
@@ -13,17 +13,23 @@ axios.interceptors.request.use(res => {
 
 // 请求后
 axios.interceptors.response.use(res => {
-    console.log(res)
-    if (res.data.code === 200) {
-        return res.data.data
+    if (res.status === 200) {
+        if (res.data.code === 200) {
+            return res.data.data
+        } else {
+            Notify({
+                type: 'danger',
+                message: res.data.msg
+            });
+            return
+        }
     } else {
-        Message({
-            message: res.data.msg,
-            type: 'error',
-            duration: 3 * 1000
-        })
-        return (res.data.data)
+        Notify({
+            type: 'danger',
+            message: '请求数据报错，请联系管理员'
+        });
     }
+    
 }, error => {
     return Promise.reject(error)
 })

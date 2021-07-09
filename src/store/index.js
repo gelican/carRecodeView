@@ -8,9 +8,9 @@ export default new Vuex.Store({
         pageType: 'front', // 当前页面是用户界面/管理界面/登录界面 front/behind/login
         userData: {
             userId: '', // 当前登录用户id
-            userName: '',  // 用户名
+            name: '',  // 用户名
             deptname: '',  // 部门
-            name: '',  // 姓名
+            nick: '',  // 姓名
             code: '',  // 工号
             status: '',  // 状态
             isAdmin: 0,  // 管理员 1
@@ -27,9 +27,9 @@ export default new Vuex.Store({
             if (!localData) {
                 state.userData = {
                     userId: '', // 当前登录用户id
-                    userName: '',  // 用户名
+                    name: '',  // 用户名
                     deptname: '',  // 部门
-                    name: '',  // 姓名
+                    nick: '',  // 姓名
                     code: '',  // 工号
                     status: '',  // 状态
                     isAdmin: 0,  // 管理员 1
@@ -46,9 +46,9 @@ export default new Vuex.Store({
         // 修改登录用户信息
         updateUserData(state, data) {
             state.userData.userId = data.user.id
-            state.userData.userName = data.user.userName
             state.userData.deptname = data.user.deptname
             state.userData.name = data.user.name
+            state.userData.nick = data.user.nick
             state.userData.code = data.user.code
             state.userData.status = data.user.status
             state.userData.isAdmin = data.user.isAdmin
@@ -58,9 +58,9 @@ export default new Vuex.Store({
         // 删除登录用户信息
         removeUserData(state) {
             state.userData.userId = ''
-            state.userData.userName = ''
             state.userData.deptname = ''
             state.userData.name = ''
+            state.userData.nick = ''
             state.userData.code = ''
             state.userData.status = ''
             state.userData.isAdmin = 0
